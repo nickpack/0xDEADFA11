@@ -11,10 +11,12 @@
         {% endfor %}
     </div>
     <div class="sixteen columns alpha omega">
-        <h2>Our Stuff</h2>
+        <h2>Labs Projects</h2>
         {% for project in projects %}
-            <h2><a href="/projects/{{ project.name }}">{{ project.name }}</a></h2>
+        <div class="eight columns {{ loop.cycle('alpha', 'omega') }}">
+            <h3><a href="/projects/{{ project.name }}">{{ project.name }}</a></h3>
             <p>{{ project.description }}</p>
+        </div>
         {% endfor %}
     </div>
 {% endblock %}

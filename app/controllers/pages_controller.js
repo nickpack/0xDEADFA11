@@ -32,7 +32,7 @@ PagesController.main = function () {
         }
         controller.title = 'Welcome.';
         controller.team = results[0];
-        controller.projects = results[1];
+        controller.projects = results[1].reverse();
         controller.user = controller.req.user;
         controller.render();
     });

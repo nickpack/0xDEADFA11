@@ -876,6 +876,12 @@ pre .xml .css,
 pre .xml .cdata {
   opacity: 0.5; }
 
+.forkimage {
+  position: absolute;
+  top: 0;
+  left: 149px;
+  border: 0; }
+
 header h1 span {
   font-size: .5em;
   font-style: italic; }
