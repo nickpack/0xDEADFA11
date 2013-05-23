@@ -8,7 +8,7 @@ PagesController.main = function () {
     var controller = this;
     async.parallel([
         function (cb) {
-            request('https://api.github.com/orgs/Cohaesus/members', function (err, resp, body) {
+            request({ uri: 'https://api.github.com/orgs/Cohaesus/members', headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
                 if (resp.statusCode === 404) {
                     controller.res.send(404);
                 }
@@ -16,7 +16,7 @@ PagesController.main = function () {
             })
         },
         function (cb) {
-            request('https://api.github.com/orgs/Cohaesus/repos', function (err, resp, body) {
+            request({ uri: 'https://api.github.com/orgs/Cohaesus/repos', headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
                 if (resp.statusCode === 404) {
                     cb(null, '<p>No projects were found, our bad.</p>');
                 }

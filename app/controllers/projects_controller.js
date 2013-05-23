@@ -30,7 +30,7 @@ ProjectsController.getProject = function () {
     var controller = this;
     async.parallel([
         function (cb) {
-            request('https://api.github.com/repos/' + name, function (err, resp, body) {
+            request({ uri: 'https://api.github.com/repos/' + name,  headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
                 if (resp.statusCode === 404) {
                     controller.res.send(404);
                 }
@@ -69,12 +69,12 @@ ProjectsController.getProject = function () {
 
 ProjectsController.main = function () {
     var controller = this;
-    request('https://api.github.com/orgs/Cohaesus/repos', function (err, resp, body) {
+    request({ uri: 'https://api.github.com/orgs/Cohaesus/repos',  headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
         if (resp.statusCode === 404) {
             controller.res.send(404);
         }
         controller.title = 'Projects';
-        controller.projects = JSON.parse(body);
+        controller.projects = JSON.parse(body).reverse();
         controller.user = this.req.user;
         controller.render();
     });
