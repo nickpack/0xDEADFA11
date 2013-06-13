@@ -1,0 +1,9 @@
+{
+  "unique-headings": false,
+  "box-model": false,
+  "font-sizes": false,
+  "box-sizing": false,
+  "qualified-headings": false,
+  "ids": false,
+  "important": false
+}

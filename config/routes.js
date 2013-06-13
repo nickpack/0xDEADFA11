@@ -1,6 +1,10 @@
 module.exports = function routes() {
     this.root('pages#main');
-    this.match('projects', 'projects#main');
     this.match('projects/:name', 'projects#get_project');
-    this.match('signup.html', 'auth#signup', { via: ['get', 'post'] });
+    this.match('torque', 'torque#main');
+    this.match('blog', 'blog#main');
+    this.match('blog/:year', 'blog#archive');
+    this.match('blog/:year/:month', 'blog#archive');
+    this.match('blog/:year/:month/:day', 'blog#archive');
+    this.match('blog/:year/:month/:day/:slug', 'blog#viewArticle');
 };

@@ -1,43 +1,43 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // This is a bit hacky, but prevents duplicate including of JS deps in final output
-      var bower_libs = require('./component.json');
-      var js_libs = [];
+    var bower_libs = require('./component.json');
+    var js_libs = [];
 
-      for (var package_name in bower_libs.dependencies) {
+    for (var package_name in bower_libs.dependencies) {
         if (bower_libs.dependencies.hasOwnProperty(package_name)) {
-          js_libs.push('public/js/libs/' + package_name + '/' + package_name + '.js');
+            js_libs.push('public/js/libs/' + package_name + '/' + package_name + '.js');
         }
-      }
+    }
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         // JS
         concat: {
-          main: {
-            files: {
-              'public/js/libs.js': js_libs,
-              'public/js/<%= pkg.name %>.js': 'public/js/scripts/**/*.js'
+            main: {
+                files: {
+                    'public/js/libs.js': js_libs,
+                    'public/js/<%= pkg.name %>.js': 'public/js/scripts/**/*.js'
+                }
             }
-          }
         },
         uglify: {
-          options: {
-            banner: '/*! <%= pkg.name %>-<%= grunt.template.today("dd-mm-yyyy") %> (C) 2013 Cohaesus Projects Ltd*/\n'
-          },
-          project: {
-            src: 'public/js/<%= pkg.name %>.js',
-            dest: 'public/js/<%= pkg.name %>.min.js'
-          },
-          libs: {
-            src: 'public/js/libs.js',
-            dest: 'public/js/libs.min.js'
-          }
+            options: {
+                banner: '/*! <%= pkg.name %>-<%= grunt.template.today("dd-mm-yyyy") %> (C) 2013 Cohaesus Projects Ltd*/\n'
+            },
+            project: {
+                src: 'public/js/<%= pkg.name %>.js',
+                dest: 'public/js/<%= pkg.name %>.min.js'
+            },
+            libs: {
+                src: 'public/js/libs.js',
+                dest: 'public/js/libs.min.js'
+            }
         },
         jshint: {
-            files: ['Gruntfile.js', 'public/js/scripts/**/*.js'],
+            files: ['public/js/scripts/**/*.js'],
             options: {
                 globals: {
                     jQuery: true,
@@ -51,15 +51,14 @@ module.exports = function(grunt) {
         sass: {
             production: {
                 files: {
-                    'public/css/<%= pkg.name %>.css': 'public/scss/style.scss'
+                    'public/css/<%= pkg.name %>.css': 'public/scss/0xdeadfa11.scss'
                 }
             }
         },
         csslint: {
             scssoutput: {
                 options: {
-                    'vendor-prefix': false,
-                    'adjoining-classes': false
+                    csslintrc: '.csslintrc'
                 },
                 src: ['public/css/<%= pkg.name %>.css']
             }

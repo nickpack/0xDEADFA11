@@ -1,40 +1,54 @@
 var locomotive = require('locomotive'),
     request = require('request'),
-    async = require('async');
+    async = require('async'),
+    CachedPayload = require('../models/cachedpayload');
 
 var PagesController = new locomotive.Controller();
 
 PagesController.main = function () {
     var controller = this;
-    async.parallel([
-        function (cb) {
-            request({ uri: 'https://api.github.com/orgs/Cohaesus/members', headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
-                if (resp.statusCode === 404) {
-                    controller.res.send(404);
-                }
-                cb(null, JSON.parse(body));
-            })
-        },
-        function (cb) {
-            request({ uri: 'https://api.github.com/orgs/Cohaesus/repos', headers: {'User-Agent': 'Cohaesus-Labs'} }, function (err, resp, body) {
-                if (resp.statusCode === 404) {
-                    cb(null, '<p>No projects were found, our bad.</p>');
-                }
+    controller.title = 'Hi, I\'m Nick...';
+    controller.user = controller.req.user;
 
-                cb(null, JSON.parse(body));
-            })
+    var apiUrl = 'https://api.github.com/users/nickpack/repos?sort=pushed';
+
+    var d = new Date();
+
+    CachedPayload.find({
+        url: apiUrl,
+        date: {
+            $gte: d.setDate(d.getDate() - 1)
         }
-    ],
-    function (err, results) {
+    }).sort({date: -1}).limit(1).execFind(function (err, payload) {
         if (err) {
-            controller.send(err);
-            return;
+            controller.res.send(500);
+        } else {
+            if (payload.length < 1) {
+                console.log('Fresh as fuck');
+                request({ uri: apiUrl, headers: {'User-Agent': '0xDEADFA11.net'} }, function (err, resp, body) {
+                    if (resp.statusCode === 404) {
+                        controller.res.send(404);
+                    }
+                    CachedPayload.savePayload(apiUrl, body, function (err, body) {
+                        if (err) {
+                            controller.error(err);
+                        }
+                    });
+
+                    if (err) {
+                        controller.send(err);
+                        return;
+                    }
+                    controller.projects = JSON.parse(body);
+                    controller.render();
+                });
+            } else {
+                console.log('From cache');
+
+                controller.projects = JSON.parse(payload[0].payload);
+                controller.render();
+            }
         }
-        controller.title = 'Welcome.';
-        controller.team = results[0];
-        controller.projects = results[1].reverse();
-        controller.user = controller.req.user;
-        controller.render();
     });
 };
 

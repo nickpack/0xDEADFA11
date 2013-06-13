@@ -1,0 +1,171 @@
+@import "_variables";
+@import "_mixins";
+
+body {
+  background: #fff;
+  font: 14px/21px $body_font_family;
+  color: #444;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+@import "_grid";
+@import "_typography";
+@import "_typography";
+@import "_links";
+@import "_lists";
+@import "_forms";
+@import "_images";
+@import "_syntax";
+
+header {
+  @include vertical-gradient($form_button_gradient_start, $form_button_gradient_end);
+  @include button_border($form_button_border_rightbottom, $form_button_border_topleft);
+  border-bottom: 1px solid #e5e5e5;
+  height: 30px;
+  margin-bottom: 20px;
+
+  & .deadfa11 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 20px 0 0;
+    height: 30px;
+    @include box-sizing(border-box);
+    text-shadow: $form_button_text_shadow;
+  }
+
+  & ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  & .icon {
+    padding-top: 3px;
+    font-size: 24px;
+    float: right;
+    border-left: 1px solid #efefef;
+    @include box-shadow(-1px, 0, 0, #ccc);
+  }
+
+  & li {
+    display:block;
+    float: left;
+    @include box-sizing(border-box);
+    border-right: 1px solid #efefef;
+    @include box-shadow(1px, 0, 0, #ccc);
+    height: 30px;
+    padding: 6px 8px;
+  }
+
+  & li:last-child {
+    border-right: none;
+  }
+
+  /*& li:hover {
+    @include vertical-gradient($form_button_gradient_end, $form_button_gradient_start);
+  }*/
+
+  & li a:link {
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: $form_button_text_shadow;
+  }
+
+  & li a:hover {
+    color: #0497d0;
+  }
+}
+
+footer {
+  @include vertical-gradient($form_button_gradient_start, $form_button_gradient_end);
+  @include button_border($form_button_border_rightbottom, $form_button_border_topleft);
+
+  & section {
+    border-right: 1px solid #efefef;
+    @include box-shadow(1px, 0, 0, #ccc);
+    padding-top: 20px;
+    min-height: 150px;
+  }
+
+  & section:last-child {
+    border-right:none;
+    @include box-shadow(0, 0, 0, #ccc);
+  }
+}
+
+.ghbar {
+  @include vertical-gradient($form_button_gradient_start, $form_button_gradient_end);
+  @include button_border($form_button_border_rightbottom, $form_button_border_topleft);
+  @include border-radius($form_button_border_radius);
+  color: $form_button_text_colour;
+  display: block;
+  font-size: $form_button_font_size;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: $form_button_text_shadow;
+  line-height: normal;
+  padding: $form_button_padding;
+  font-family: $form_element_font;
+  text-align: right;
+
+  & h3 {
+    clear:none;
+    font-size: 16px;
+    margin: 0 15px 0 0;
+    padding: 0;
+    line-height: 12px;
+    float:left;
+  }
+
+  & a {
+    font-weight: bold;
+  }
+
+  & .icon-github {
+    float:left;
+    margin-right: 6px;
+    line-height: 12px;
+    font-size: 18px;
+  }
+}
+
+#intro {
+  margin-bottom: 20px;
+}
+
+#intro, #intro h1 {
+  border-bottom: 1px solid #000;
+}
+
+#oss {
+  & article {
+    @include vertical-gradient(#efefef, #fff);
+    @include border-radius($form_button_border_radius);
+    margin-bottom: 6px;
+    @include box-sizing(border-box);
+  }
+  & .project p {
+    min-height: 60px;
+    padding: 5px;
+    margin: 0;
+    vertical-align: top;
+  }
+  & a {
+    font-family: $form_element_font;
+    text-decoration: none;
+    text-shadow: $form_button_text_shadow;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 716px) {
+  header .icon {
+    display:none;
+  }
+
+  .deadfa11 {
+    display:none !important;
+  }
+}

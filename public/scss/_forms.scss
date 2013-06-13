@@ -1,5 +1,4 @@
 /* #Buttons
-
 ================================================== */
 .button,
 button,
@@ -11,14 +10,14 @@ input[type="button"] {
   @include border-radius($form_button_border_radius);
   color: $form_button_text_colour;
   display: inline-block;
-  font-size: 11px;
+  font-size: $form_button_font_size;
   font-weight: bold;
   text-decoration: none;
   text-shadow: $form_button_text_shadow;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin: $form_input_margin;
   line-height: normal;
-  padding: 8px 10px;
+  padding: $form_button_padding;
   font-family: $form_element_font;
 }
 
@@ -41,14 +40,14 @@ input[type="button"]:active {
   border: $form_button_active_border;
 }
 
-.button.full-width,
+.button .full-width,
 button.full-width,
 input[type="submit"].full-width,
 input[type="reset"].full-width,
 input[type="button"].full-width {
   width: 100%;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
   text-align: center;
 }
 
@@ -63,29 +62,37 @@ input::-moz-focus-inner {
 ================================================== */
 
 form {
-  margin-bottom: 20px;
+  margin: $form_fieldset_margin;
 }
 
 fieldset {
-  margin-bottom: 20px;
+  margin: $form_fieldset_margin;
+}
+
+input[type="search"],
+input[type="url"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield; 
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="number"],
+input[type="tel"],
 textarea,
 select {
   border: $form_input_border;
-  padding: 6px 4px;
-  outline: none;
+  padding: $form_input_padding;
   @include border-radius(2px);
-  font: 13px $form_element_font;
+  font: $form_input_font_size $form_element_font;
   color: $form_input_text_colour;
-  margin: 0;
-  width: 210px;
+  width: $form_input_width;
   max-width: 100%;
   display: block;
-  margin-bottom: 20px;
+  margin: $form_input_margin;
   background: $form_input_background;
 }
 
@@ -96,10 +103,15 @@ select {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
   border: $form_input_focus_border;
   color: $form_input_focus_text_colour;
-  @include box-shadow(0, 0, 3px, rgba(0, 0, 0, .2))
+  outline: none;
+  @include box-shadow(0, 0, 3px, rgba(0, 0, 0, .2));
 }
 
 textarea {
@@ -109,12 +121,12 @@ textarea {
 label,
 legend {
   display: block;
-  font-weight: bold;
-  font-size: 13px;
+  font-weight: $legend_font_weight;
+  font-size: $legend_font_size;
 }
 
 select {
-  width: 220px;
+  width: $form_input_select_width;
 }
 
 input[type="checkbox"] {
@@ -124,6 +136,6 @@ input[type="checkbox"] {
 label span,
 legend span {
   font-weight: normal;
-  font-size: 13px;
+  font-size: $form_input_font_size;
   color: $form_label_legend_colour;
 }

@@ -7,6 +7,6 @@ locomotive.boot(__dirname, env, function (err, server) {
     if (err) {
         throw err;
     }
-    console.log(env);
+    console.log(env + ' ' + port);
     server.listen(port, address);
 });

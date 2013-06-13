@@ -1,6 +1,6 @@
 {% extends 'layout.html.swig' %}
 {% block content %}
-    <div class="sixteen columns alpha omega">
+    <article class="sixteen columns alpha omega github-project">
         {{ markdown|raw }}
-    </div>
+    </article>
 {% endblock %}
