@@ -7,4 +7,5 @@ module.exports = function routes() {
     this.match('blog/:year/:month', 'blog#archive');
     this.match('blog/:year/:month/:day', 'blog#archive');
     this.match('blog/:year/:month/:day/:slug', 'blog#viewArticle');
+    this.match('blog/:slug', 'blog#viewArticle');
 };
