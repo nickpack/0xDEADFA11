@@ -1,4 +1,5 @@
 @import "_variables";
+@import "normalize/_normalize";
 @import "_mixins";
 
 body {
@@ -13,11 +14,11 @@ body {
 
 @import "_grid";
 @import "_typography";
-@import "_typography";
 @import "_links";
 @import "_lists";
 @import "_forms";
 @import "_images";
+@import "_tables";
 @import "_syntax";
 
 header {

@@ -15,7 +15,8 @@
     "async": "~0.2.7",
     "highlight.js": "~7.3.0",
     "request": "~2.16.6",
-    "marked": "~0.2.8"
+    "marked": "~0.2.8",
+    "poet": "~1.0.0rc1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %>-<%= grunt.template.today("dd-mm-yyyy") %> (C) 2013 Cohaesus Projects Ltd*/\n'
+                banner: '/*! <%= pkg.name %>-<%= grunt.template.today("dd-mm-yyyy") %> (C) 2013 Nikki James Pack*/\n'
             },
             project: {
                 src: 'public/js/<%= pkg.name %>.js',
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
         },
         regarde: {
             development: {
-                files: ['public/**/*', 'app/**/*', '!public/scss/**/*', '!public/js/**/*'],
+                files: ['public/**/*', 'app/**/*', '!public/scss/**/*'],
                 tasks: ['express-server', 'livereload']
             },
             styles: {

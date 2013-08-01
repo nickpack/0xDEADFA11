@@ -1,15 +1,5 @@
-/* #Typography
-================================================== */
-/*	@font-face {
-	    font-family: 'FontName';
-	    src: url('../fonts/FontName.eot');
-	    src: url('../fonts/FontName.eot?iefix') format('eot'),
-	         url('../fonts/FontName.woff') format('woff'),
-	         url('../fonts/FontName.ttf') format('truetype'),
-	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
-	    font-weight: normal;
-	    font-style: normal; }
-*/
+// #Typography
+// ==================================================
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: inherit;
@@ -22,7 +12,6 @@ h1 {
   font-size: $heading1_font_size;
   line-height: $heading1_line_height;
   margin: $heading1_margin;
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
 }
 
 h2 {
@@ -32,7 +21,6 @@ h2 {
   font-size: $heading2_font_size;
   line-height: $heading2_line_height;
   margin: $heading2_margin;
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
 }
 
 h3 {
@@ -42,7 +30,6 @@ h3 {
   font-size: $heading3_font_size;
   line-height: $heading3_line_height;
   margin: $heading3_margin;
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
 }
 
 h4 {
@@ -52,7 +39,6 @@ h4 {
   font-size: $heading4_font_size;
   line-height: $heading4_line_height;
   margin: $heading4_margin;
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
 }
 
 h5 {
@@ -77,6 +63,7 @@ h6 {
 
 p {
   margin: $paragraph_margin;
+  line-height: $paragraph_line_height;
 }
 
 p img {
@@ -102,12 +89,11 @@ small {
   font-size: 80%;
 }
 
-/*	Blockquotes  */
 blockquote, blockquote p {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: $blockquote_font_size;
+  line-height: $blockquote_line_height;
   color: $blockquote_colour;
-  font-style: italic;
+  font-style: $blockquote_font_style;
 }
 
 blockquote {
@@ -128,13 +114,4 @@ blockquote cite:before {
 
 blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
   color: $blockquote_cite_link_colour;
-}
-
-/* not really typographical, but I couldnt find anywhere else to put it */
-hr {
-  border: $hr_border;
-  border-width: $hr_border_width;
-  clear: both;
-  margin: $hr_margin;
-  height: 0;
 }
