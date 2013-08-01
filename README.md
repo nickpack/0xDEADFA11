@@ -1,9 +1,9 @@
-# Cohaesus Labs
-> This is the front end to our creative coding experiments at [Cohaesus](http://www.cohaesus.co.uk).
+# 0xDEADFA11
+> This is the large hackfest that will eventually end up as my personal site
 
 ## Contributors
 * Nick Pack
 
 ## Licence
-Copyright (c) 2013 Cohaesus Projects Ltd
+Copyright (c) 2013 Nikki James Pack
 Licensed under the MIT license.
